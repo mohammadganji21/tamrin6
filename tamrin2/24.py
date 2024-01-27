@@ -7,10 +7,10 @@ for i in range(1, shomare_radif):
         radif.append(mosalas[i-1][j-1] + mosalas[i-1][j])
     radif.append(1)
     mosalas.append(radif)
-    
+
 for radif in mosalas:
-    print("" * (shomare_radif-len(radif)))
+    print(" " * (shomare_radif - len(radif)), end="")
     for shomare in radif:
-         print(f"{shomare} " , end ="" )
+        print(f"{shomare} ", end="")
     print()
 # by mohammad_ganji(vdds)
