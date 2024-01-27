@@ -1,7 +1,8 @@
 def fep(n, w, movements):
-    g = [['.' for i in range(n)] for j in range(w)]
+    g = [['.' for _ in range(n)] for _ in range(w)]
     cx, cy = 0, 0
-    g[cy][cx] = '*' 
+    g[cy][cx] = '*'
+    
     for move in movements:
         if move == 'R' and cx < n - 1:
             cx += 1
@@ -10,20 +11,26 @@ def fep(n, w, movements):
         elif move == 'B':
             cy += 1
         g[cy][cx] = '*'
-    for i in range(w):
-         print(' '.join(g[i]))
+    
+    for row in g:
+        print(' '.join(row))
+    
     if cx != n - 1:
-         print("There's no way out!")
+        print("There's no way out!")
 
-n = int(input())
-K = []
-m = 0
-while True:
-    d = input()
-    if d != "END":
-        K.append(d)
-        if d == "B":
-            m += 1
-    else:
-        break
-fep(n, m + 1, K)
+def main():
+    n = int(input())
+    movements = []
+    
+    while True:
+        move = input()
+        if move != "END":
+            movements.append(move)
+        else:
+            break
+
+    fep(n, len(movements) + 1, movements)
+
+if __name__ == "__main__":
+    main()
+
