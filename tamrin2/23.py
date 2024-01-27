@@ -1,18 +1,18 @@
 import math
 import functools
 
-tarps = {
-    'sum': lambda x: sum(x),
+operations = {
+    'sum': sum,
     'average': lambda x: round(sum(x) / len(x), 2),
     'gcd': lambda x: functools.reduce(math.gcd, x),
     'lcd': lambda x: functools.reduce(lambda a, b: a * b // math.gcd(a, b), x),
-    'min': lambda x: min(x),
-    'max': lambda x: max(x)
+    'min': min,
+    'max': max
 }
 
 def perform_operation(operation, data):
     try:
-        result = tarps[operation](data)
+        result = operations[operation](data)
         print(result)
     except KeyError:
         print("Invalid operation")
