@@ -1,23 +1,23 @@
-def jaamtabe(a,b):
+def jaamtabe(a, b):
     while b != 0:
         mmd = a & b
         a = a ^ b
         b = mmd << 1
     return a
 
-    
-n = int(input())
+def main():
+    n = int(input())
+    m = int(input())
+    k = int(input())
 
-m = int(input())
+    result = jaamtabe(n, m)
 
-k = int(input())
+    print(result)
 
-javabejaametabe = jaamtabe(n,m)
+    if result == k:
+        print('YES')
+    else:
+        print('NO')
 
-
-if javabejaametabe == k :
-    print(javabejaametabe)
-    print('YES')
-else :
-    print(javabejaametabe)
-    print('NO')
+if __name__ == "__main__":
+    main()
