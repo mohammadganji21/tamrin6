@@ -1,20 +1,16 @@
-def tabe_tashkhis_adad_aval(adadvorudi):
-    if adadvorudi < 2:  
-        return '0'
-    for i in range(2, int(adadvorudi ** 0.5) + 1):
-        if adadvorudi % i == 0:
-            return '0'
-    return '1'
+def is_prime(number):
+    return number > 1 and all(number % i != 0 for i in range(2, int(number**0.5) + 1))
+
+def count_primes_in_range(start, end):
+    return sum(1 for num in range(start, end + 1) if is_prime(num))
+
 a, b = map(int, input().split())
-tedad_adad_aval = 0
 
 if a < b:
-    for i in range(a, b + 1):
-        if tabe_tashkhis_adad_aval(i) == '1':
-            tedad_adad_aval += 1
-    print('main order - amount: ' + str(tedad_adad_aval))
-elif a >= b:
-    for i in range(b, a + 1):
-        if tabe_tashkhis_adad_aval(i) == '1':
-            tedad_adad_aval += 1
-    print('reverse order - amount: ' + str(tedad_adad_aval))
+    count = count_primes_in_range(a, b)
+    order_type = 'Main'
+else:
+    count = count_primes_in_range(b, a)
+    order_type = 'Reverse'
+
+print(f'{order_type} order - amount: {count}')
