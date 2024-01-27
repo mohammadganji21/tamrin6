@@ -20,4 +20,5 @@ def first_letter(word):
 def print_result(output):
     print(output)
 
-obscure_code()
+if __name__ == "__main__":
+    obscure_code()
