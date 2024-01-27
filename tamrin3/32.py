@@ -1,20 +1,29 @@
-list_of_numbers = list(map(int, input().split()))
-result_we_want = input()
-result_we_want = int(result_we_want)
-nonsorted, sorted = {} , []
+def find_indices_for_sum(numbers, target_sum):
+    indices_map = {}
+    result_indices = []
 
-#checking the result of our sum with the result that system want
+    for i, num in enumerate(numbers):
+        complement = target_sum - num
 
-for i , j in enumerate(list_of_numbers):
-    important_number = (result_we_want - j)
-    if important_number in nonsorted:
-        sorted . append(nonsorted[important_number] + i)
-    nonsorted[j] = i
+        if complement in indices_map:
+            result_indices.append((indices_map[complement], i))
 
-if sorted:
-    sorted . sort()
-    for i in sorted:
-        print(i)
+        indices_map[num] = i
 
-else:
-    print("Not Found!")
+    return result_indices
+
+def main():
+    list_of_numbers = list(map(int, input().split()))
+    result_we_want = int(input())
+
+    result_indices = find_indices_for_sum(list_of_numbers, result_we_want)
+
+    if result_indices:
+        result_indices.sort()
+        for indices in result_indices:
+            print(indices[0], indices[1])
+    else:
+        print("Not Found!")
+
+if __name__ == "__main__":
+    main()
