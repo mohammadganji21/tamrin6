@@ -1,30 +1,21 @@
-#by ganji
-
-def tabe_tabdil_be_binary(n): 
+def convert_to_binary_string(n):
     return "{:032b}".format(int(n))
 
-rightside = str(input())
-leftside = str(input())
+def check_binary_digit(binary_str, position):
+    return 'yes' if binary_str[-position - 1] == '1' else 'no'
 
-tedad_afrad = int(input())
+def main():
+    rightside = convert_to_binary_string(input())
+    leftside = convert_to_binary_string(input())
 
-leftside = str(tabe_tabdil_be_binary(int(leftside)))
-rightside = str(tabe_tabdil_be_binary(int(rightside)))
+    num_of_elements = int(input())
 
-binary_tamam_afrad = str(leftside)+str(rightside)
+    binary_tamam_afrad = leftside + rightside
 
-list_print_nahayi=[]
+    results = [check_binary_digit(binary_tamam_afrad, int(input())) for _ in range(num_of_elements)]
 
-for i in range(tedad_afrad):
+    for result in results:
+        print(result)
 
-    m = int(input())
-
-    if binary_tamam_afrad[-m-1]=='0':
-        list_print_nahayi.append('no')
-
-    else:
-        list_print_nahayi.append('yes')
-
-
-for a in range(len(list_print_nahayi)):
-    print(list_print_nahayi[a])
+if __name__ == "__main__":
+    main()
